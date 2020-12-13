@@ -3,7 +3,7 @@ import { Heading, Text } from "@chakra-ui/react";
 const Projects = () => {
 	return (
 		<>
-			<Heading as="h2">
+			<Heading as="h2" id="projects">
 				Projects
 			</Heading>
 			<Text>

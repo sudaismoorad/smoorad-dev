@@ -33,12 +33,10 @@ const Navbar = (props: NavbarProps) => {
 						S
 					</Link>
 				</NextLink>
-				<NextLink href="/projects">
-					<Link py={2} px={3}>
-						Projects
-					</Link>
-				</NextLink>
-				<NextLink href="/resume.pdf">
+				<Link py={2} px={3} href="/#projects">
+					Projects
+				</Link>
+				<NextLink href="/public/resume.pdf">
 					<Link py={2} px={3}>
 						Resume
 					</Link>
@@ -53,7 +51,7 @@ const Navbar = (props: NavbarProps) => {
 				<Link
 					type="button"
 					aria-label="Follow me on Twitter"
-					href="https://twitter.com/MooradSudais"
+					href="https://twitter.com/sudaismoorad"
 					target="_blank"
 					boxSize="40px"
 				>
@@ -65,7 +63,7 @@ const Navbar = (props: NavbarProps) => {
 				</Link>
 				<Link
 					aria-label="Check out my GitHub"
-					href="https://github.com/smoorad-vassar"
+					href="https://github.com/sudaismoorad"
 					target="_blank"
 				>
 					<IconButton
@@ -75,12 +73,6 @@ const Navbar = (props: NavbarProps) => {
 					/>
 				</Link>
                 <DarkModeSwitch />
-				{/* <IconButton
-					aria-label="Toggle Dark Mode"
-					icon={isDark ? <MoonIcon /> : <SunIcon />}
-					bg="none"
-					onMouseDown={toggleColorMode}
-				/> */}
 			</Flex>
 		</Stack>
 	);
