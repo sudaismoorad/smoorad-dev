@@ -1,8 +1,16 @@
-import { Box, Heading, Flex, Text, Tag, useColorMode } from "@chakra-ui/react";
+import { Box, Heading, Flex, Text, Tag, Link, useColorMode } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { getDate } from "../../lib/api";
+import { Blog } from "../../types/blog";
+interface BlogPostProps {
+	post: Blog;
+}
 
-const BlogPost = () => {
+const BlogPost = ({ post, ...props }: BlogPostProps) => {
 	const { colorMode } = useColorMode();
 	const isDark = colorMode === "dark";
+
+	if (!post) return null;
 
 	return (
 		<Box
@@ -13,27 +21,31 @@ const BlogPost = () => {
 			p={4}
 			backgroundColor={isDark ? "#2d3748" : ""}
 			borderColor={isDark ? "#4a5568" : "#e2e8f0"}
+			{...props}
 		>
-			<Heading as="h3" isTruncated size="md">
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
-				dolores, facere libero tenetur praesentium dignissimos quibusdam, unde
-				quam autem eius mollitia obcaecati consectetur quo suscipit commodi
-				delectus vero dolore tempore.
-			</Heading>
+			<NextLink href={`/blog/${post.slug}`}>
+				<Link>
+					<Heading as="h3" isTruncated size="md">
+						{post.title}
+					</Heading>
+				</Link>
+			</NextLink>
 			<Flex mt={1} alignItems="center">
-				<Text mr={2}>24 September 2020</Text>
-				<Tag mr={0.5} size="sm">
-					Latin
-				</Tag>
-				<Tag mr={0.5} size="sm">
-					Text
-				</Tag>
+				<Text mr={2}>
+					{getDate(post.date)}
+				</Text>
+				{
+					post.tags.map((tag) => {
+						return (
+						<Tag key={post.slug} mr={0.5} size="sm">
+							{tag}
+						</Tag>
+						)
+					})
+				}
 			</Flex>
 			<Text mt={4} isTruncated>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptates
-				aliquam, porro quod unde officiis saepe! A voluptas est ipsam velit
-				ducimus quibusdam eveniet voluptate perspiciatis, error ab consectetur
-				recusandae.
+				{post.description}
 			</Text>
 		</Box>
 	);

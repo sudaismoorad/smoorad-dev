@@ -1,16 +1,15 @@
-import { Flex, IconButton, Link, Stack, useColorMode } from "@chakra-ui/react";
-import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { Flex, IconButton, Link, Stack } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { FiGithub, FiTwitter } from "react-icons/fi";
+import { FiGithub, FiTwitter, FiHome } from "react-icons/fi";
+import useWindowSize from "../hooks/useWindowSize";
 
 type NavbarProps = {
 	sticky?: boolean;
 };
 
 const Navbar = (props: NavbarProps) => {
-	const { colorMode, toggleColorMode } = useColorMode();
-	const isDark = colorMode == "dark";
+	const { width } = useWindowSize()
 	return (
 		<Stack
 			as="nav"
@@ -28,24 +27,33 @@ const Navbar = (props: NavbarProps) => {
 			zIndex={props?.sticky ? "1100" : ""}
 		>
 			<Flex alignItems="center">
-				<NextLink href="/">
-					<Link py={2} px={3}>
-						S
+				<Link href="/" py={2} px={3}>
+					<IconButton
+						bg="none"
+						aria-label="Go back to the Home Page"
+						icon={<FiHome />}
+					/>
 					</Link>
-				</NextLink>
-				<Link py={2} px={3} href="/#projects">
-					Projects
-				</Link>
-				<NextLink href="/public/resume.pdf">
+				{width < 375 
+					? null : 
+					<Link py={2} px={3} href="/#projects">
+						Projects
+					</Link>
+				}
+				{/* <NextLink href="/public/resume.pdf">
 					<Link py={2} px={3}>
 						Resume
 					</Link>
-				</NextLink>
-				<NextLink href="/blog">
-					<Link py={2} px={3}>
-						Blog
-					</Link>
-				</NextLink>
+				</NextLink> */}
+				{
+					width < 290 
+					? null :
+					<NextLink href="/blog">
+						<Link py={2} px={3}>
+							Blog
+						</Link>
+					</NextLink>
+				}
 			</Flex>
 			<Flex alignItems="center">
 				<Link
