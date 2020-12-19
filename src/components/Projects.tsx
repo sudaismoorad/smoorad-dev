@@ -7,10 +7,8 @@ const Projects = () => {
 				Projects
 			</Heading>
 			<Text>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum porro,
-				quas aliquam voluptas nobis iure delectus facere totam perspiciatis cum
-				alias odio reprehenderit dolore pariatur voluptatem nemo quaerat
-				adipisci recusandae!
+				Unfortuntely, have nothing to show you at the moment :(
+				Check back in a few days!
 			</Text>
 		</>
 	);

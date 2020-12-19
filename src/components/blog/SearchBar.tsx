@@ -4,7 +4,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 const SearchBar = () => {
 	return (
 		<>
-			<InputGroup>
+			<InputGroup pb="1rem">
 				<InputLeftElement pointerEvents="none" children={<SearchIcon />} />
 				<Input placeholder="Search blog posts" />
 			</InputGroup>
